@@ -2,11 +2,11 @@ import { NextResponse, connection } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
 
 export async function GET() {
-  try {
-    // Menandai route ini selalu dinamis di Next.js 16 (Cache Components)
-    await connection();
+  await connection();
 
+  try {
     const supabase = getSupabaseAdmin();
+    // ... sisa kode di dalam try tetap sama
     const nowIso = new Date().toISOString();
 
     const { error: cleanupError } = await supabase

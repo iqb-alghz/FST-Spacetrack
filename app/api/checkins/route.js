@@ -2,9 +2,9 @@ import { NextResponse, connection } from 'next/server';
 import { getSupabaseAdmin } from '@/lib/supabase';
 
 export async function GET(request) {
-  try {
-    await connection();
+  await connection();
 
+  try {
     const { searchParams } = new URL(request.url);
     const roomCode = (searchParams.get('room_code') || '').trim().toUpperCase();
     const rawLimit = Number(searchParams.get('limit') || 20);

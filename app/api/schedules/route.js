@@ -12,9 +12,9 @@ const DAY_MAP = {
 };
 
 export async function GET(request) {
-  try {
-    await connection();
+  await connection();
 
+  try {
     const { searchParams } = new URL(request.url);
     const rawDay = (searchParams.get('day') || '').trim();
     const roomCode = (searchParams.get('room_code') || '').trim().toUpperCase();
